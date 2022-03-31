@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/ivLike"
         android:layout_width="46dp"
@@ -53,7 +62,7 @@
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="85dp"
         android:text="Description Description Description Description Description Description Description Description Description Description Description Description Description "
@@ -61,4 +70,17 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbProgressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginTop="5dp"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
