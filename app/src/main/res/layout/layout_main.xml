@@ -18,9 +18,9 @@
 
     <ImageView
         android:id="@+id/ivLike"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/ivComment"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,9 +28,9 @@
 
     <ImageView
         android:id="@+id/ivComment"
-        android:layout_width="40dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="23dp"
         android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,9 +38,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/cvUser"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="25dp"
         android:src="@drawable/user01"
         app:layout_constraintBottom_toTopOf="@+id/ivLike"
@@ -50,11 +50,11 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginBottom="5dp"
         android:text=" @Username123"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvDescription"
         app:layout_constraintStart_toStartOf="parent" />
@@ -62,9 +62,9 @@
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="300dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="85dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="70dp"
         android:text="Description Description Description Description Description Description Description Description Description Description Description Description Description "
         android:textColor="@color/white"
         android:textSize="14sp"
@@ -75,12 +75,26 @@
         android:id="@+id/pbProgressbar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="23.5dp"
+
         android:progressBackgroundTint="@color/white"
-        android:progressTint="@color/white"
+        android:progressTint="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <SeekBar
+        android:id="@+id/sbSeekbar"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:layout_marginTop="21.5dp"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,20 +7,18 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.logging.Handler;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
@@ -68,6 +66,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView tvUsername;
         private TextView tvDescription;
         private ProgressBar pbProgressbar;
+        private SeekBar seekBar;
+        private Runnable runnable;
+        private Handler handler;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,13 +76,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             videoView = itemView.findViewById(R.id.videoView);
             pbProgressbar = itemView.findViewById(R.id.pbProgressbar);
+            seekBar = itemView.findViewById(R.id.sbSeekbar);
         }
         @SuppressLint("ClickableViewAccessibility")
         public void bind(Post post) {
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
-            tvUsername.setText(post.getUser().getUsername());
-            //videoView.setVideoPath(post.getVideo().getUrl());
+            tvUsername.setText("@"+ post.getUser().getUsername());
             ParseFile video = post.getVideo();
             if (video != null){
                 videoView.setVideoPath(post.getVideo().getUrl());
@@ -89,8 +90,31 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
+                    seekBar.setMax(videoView.getDuration());
                     pbProgressbar.setVisibility(View.GONE);
                     mediaPlayer.start();
+                    mediaPlayer.setLooping(true);
+                    updateProgressBar();
+                }
+
+            });
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
+                    if(input){
+                        videoView.seekTo(progress);
+                        seekBar.setProgress(progress);
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
                 }
             });
             videoView.setOnTouchListener(new View.OnTouchListener() {
@@ -106,7 +130,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     }
                 }
             });
-
+        }
+        public void updateProgressBar(){
+            int progress = videoView.getCurrentPosition();
+            seekBar.setProgress(progress);
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    updateProgressBar();
+                }
+            };
+            videoView.postDelayed(runnable, 10);
         }
     }
 }

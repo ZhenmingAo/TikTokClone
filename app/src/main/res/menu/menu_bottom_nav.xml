@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:labelVisibilityMode="unlabeled">
 
     <item
         android:id="@+id/action_Home"
-        android:icon="@drawable/home02"
-
-        android:title="Home"
-        app:showAsAction="always" />
+        android:icon="@drawable/home_icon_selector"
+        app:showAsAction="always"
+        android:title="" />
     <item
         android:id="@+id/action_Compose"
-        android:icon="@drawable/add01"
-
-        android:title="Compose"
-        app:showAsAction="always" />
+        android:icon="@drawable/add_icon_selector"
+        app:showAsAction="always"
+        android:title="" />
     <item
         android:id="@+id/action_Profile"
-        android:icon="@drawable/user02"
-
-        android:title="Profile"
-        app:showAsAction="always" />
+        android:icon="@drawable/profile_icon_selector"
+        app:showAsAction="always"
+        android:title="" />
 </menu>

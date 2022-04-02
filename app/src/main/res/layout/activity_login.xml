@@ -47,9 +47,9 @@
         android:layout_marginLeft="90dp"
         android:layout_marginRight="90dp"
         android:text="LOG IN"
-        android:textColor="@color/white"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+        android:textColor="@color/red"
+        app:strokeColor="@color/red"
+        app:strokeWidth="1dp" />
 
     <Button
         android:id="@+id/btnSignup"
@@ -58,8 +58,8 @@
         android:layout_marginLeft="90dp"
         android:layout_marginRight="90dp"
         android:text="SIGN UP"
-        android:textColor="@color/white"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp" />
+        android:textColor="@color/red"
+        app:strokeColor="@color/red"
+        app:strokeWidth="1dp" />
 
 </LinearLayout>

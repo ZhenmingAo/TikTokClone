@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/add_icon_selector.xml" value="0.17" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/home_icon_selector.xml" value="0.17" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/profile_icon_selector.xml" value="0.17" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/thumb_image.xml" value="0.1705" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_home.xml" value="0.3029891304347826" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_login.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_main.xml" value="0.3029891304347826" />
