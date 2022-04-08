@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_Compose:
                         //Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
-                        fragment = new PostsFragment();
+                        fragment = new ComposeFragment();
                         break;
                     case R.id.action_Profile:
                     default:

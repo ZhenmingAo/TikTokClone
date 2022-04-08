@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,8 @@ public class ProfileFragment extends Fragment{
     private Button btnLogout;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private TextView profileName;
+    private TextView userID;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -51,6 +54,10 @@ public class ProfileFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        profileName = view.findViewById(R.id.tvProfileName);
+        profileName.setText("@"+ ParseUser.getCurrentUser().getUsername());
+        userID = view.findViewById(R.id.tvUserID);
+        userID.setText("TikTok Clone Account - ID: " + ParseUser.getCurrentUser().getObjectId());
         //Logout button to log out the current user, and sends the user back to Login Page
         btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
