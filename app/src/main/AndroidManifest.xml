@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
+        <activity android:name=".SingleViewActivity" />
     </application>
 
 </manifest>

@@ -32,7 +32,7 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileFragment extends Fragment{
+public class ProfileFragment extends Fragment {
 
     public static final String TAG = "ProfileFragment";
     private Button btnLogout;

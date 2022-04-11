@@ -75,7 +75,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             videoView = itemView.findViewById(R.id.videoView);
-            pbProgressbar = itemView.findViewById(R.id.pbProgressbar);
             seekBar = itemView.findViewById(R.id.sbSeekbar);
         }
         @SuppressLint("ClickableViewAccessibility")
@@ -91,7 +90,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
                     seekBar.setMax(videoView.getDuration());
-                    pbProgressbar.setVisibility(View.GONE);
                     mediaPlayer.start();
                     mediaPlayer.setLooping(true);
                     updateProgressBar();

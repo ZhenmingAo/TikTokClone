@@ -21,17 +21,19 @@ public class ProfilePostsAdapter extends RecyclerView.Adapter<ProfilePostsAdapte
 
     Context context;
     List<Post> profilePosts;
+    OnPostListener onPostListener;
 
-    public ProfilePostsAdapter(Context context, List<Post> profilePosts) {
+    public ProfilePostsAdapter(Context context, List<Post> profilePosts, OnPostListener onPostListener) {
         this.context = context;
         this.profilePosts = profilePosts;
+        this.onPostListener = onPostListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_profile_post, parent, false);
-        return new ViewHolder(view, context);
+        return new ViewHolder(view, context, onPostListener);
     }
 
     @Override
@@ -53,15 +55,19 @@ public class ProfilePostsAdapter extends RecyclerView.Adapter<ProfilePostsAdapte
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView ivThumbnail;
         ImageView ivPlay;
         private Context context;
+        OnPostListener onPostListener;
 
-        public ViewHolder(@NonNull View itemView, Context context) {
+        public ViewHolder(@NonNull View itemView, Context context, OnPostListener onPostListener) {
             super(itemView);
             ivThumbnail = itemView.findViewById(R.id.ivThumbnail);
             ivPlay = itemView.findViewById(R.id.ivPlay);
+            this.onPostListener = onPostListener;
+
+            itemView.setOnClickListener(this);
 
             this.context = context;
         }
@@ -74,20 +80,13 @@ public class ProfilePostsAdapter extends RecyclerView.Adapter<ProfilePostsAdapte
             }
         }
 
-        /*TODO: Below is the logic to create the intent on the view that is in the RecyclerView.
-        TODO: Need a way to send the selected item (the post) to a new activity that can show the video.
-        TODO: The toast showed the correct description before making the intent.*/
-
-        /*@Override
+        @Override
         public void onClick(View view) {
-            int position = getAdapterPosition();
-            if (position != RecyclerView.NO_POSITION) {
-                Post post = profilePosts.get(position);
-                //Toast.makeText(context, post.getDescription(), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this.context, SinglePostActivity.class);
-                //i.putExtra("post", post.getObjectId());
-                context.startActivity(i);
-            }
-        }*/
+            onPostListener.onPostClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnPostListener{
+        void onPostClick(int position);
     }
 }

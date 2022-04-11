@@ -1,6 +1,7 @@
 package com.example.tiktokclone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserPosts_Fragment extends Fragment {
+public class UserPosts_Fragment extends Fragment implements ProfilePostsAdapter.OnPostListener{
 
     public static final String TAG = "ProfileFragment";
     ArrayList<Post> profilePosts;
@@ -52,7 +53,7 @@ public class UserPosts_Fragment extends Fragment {
         rvProfilePosts = view.findViewById(R.id.rvProfilePosts);
 
         profilePosts = new ArrayList<>();
-        adapter = new ProfilePostsAdapter(getContext(), profilePosts);
+        adapter = new ProfilePostsAdapter(getContext(), profilePosts, this);
         rvProfilePosts.setAdapter(adapter);
 
         StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
@@ -84,5 +85,13 @@ public class UserPosts_Fragment extends Fragment {
                 //swipeContainer.setRefreshing(false);
             }
         });
+    }
+
+    //Sends the user to a single video view activity when they click on the item in the profile page
+    @Override
+    public void onPostClick(int position) {
+        //profilePosts.get(position);
+        Intent i = new Intent(getActivity(), SingleViewActivity.class);
+        startActivity(i);
     }
 }
