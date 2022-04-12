@@ -1,13 +1,15 @@
 package com.example.tiktokclone;
 
 
+import android.os.Parcelable;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("Post")
-public class Post extends ParseObject {
+public class Post extends ParseObject implements Parcelable{
 
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_VIDEO = "video";

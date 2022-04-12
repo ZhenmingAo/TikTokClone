@@ -90,8 +90,10 @@ public class UserPosts_Fragment extends Fragment implements ProfilePostsAdapter.
     //Sends the user to a single video view activity when they click on the item in the profile page
     @Override
     public void onPostClick(int position) {
-        //profilePosts.get(position);
         Intent i = new Intent(getActivity(), SingleViewActivity.class);
+        i.putExtra("username", profilePosts.get(position).getUser().getUsername());
+        i.putExtra("description", profilePosts.get(position).getDescription());
+        i.putExtra("videoUrl", profilePosts.get(position).getVideo().getUrl());
         startActivity(i);
     }
 }
