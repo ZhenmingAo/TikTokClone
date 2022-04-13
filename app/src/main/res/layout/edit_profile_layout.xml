@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark01">
+
+    <ImageButton
+        android:id="@+id/ibEditProfileGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:src="@drawable/back_light03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cvEditProfilePic"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/user01"
+        app:civ_border_color="@color/red02"
+        app:civ_border_width="5dp"
+        app:civ_circle_background_color="@color/dark01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnChangePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="8dp"
+        android:text="Change"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvEditProfilePic"
+        app:strokeColor="@color/red02"
+        app:strokeWidth="1sp" />
+
+    <TextView
+        android:id="@+id/tvEditUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:text="Username: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChangePhoto" />
+
+    <EditText
+        android:id="@+id/etEditUsername"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/custom_edit_text_rounded"
+        android:drawableStart="@drawable/ic_baseline_account_circle_selector"
+        android:drawablePadding="10dp"
+        android:hint="Username"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditUsername" />
+
+    <TextView
+        android:id="@+id/tvEditPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="70dp"
+        android:text="Password: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditUsername" />
+
+    <EditText
+        android:id="@+id/etEditPassword"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/custom_edit_text_rounded"
+        android:drawableStart="@drawable/ic_baseline_vpn_key_selector"
+        android:drawablePadding="10dp"
+        android:hint="Password"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditPassword" />
+
+    <TextView
+        android:id="@+id/tvEditBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="70dp"
+        android:text="Bio: "
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditPassword" />
+
+    <EditText
+        android:id="@+id/etEditBio"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/custom_edit_text_rounded"
+        android:gravity="top|left"
+        android:hint="Write your bio here ..."
+        android:lines="6"
+        android:maxLines="6"
+        android:minLines="5"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditBio" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginBottom="60dp"
+        android:text="Reset"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/red02"
+        app:strokeWidth="1sp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/red02"
+        android:text="Save"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/red02"
+        app:strokeWidth="1sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

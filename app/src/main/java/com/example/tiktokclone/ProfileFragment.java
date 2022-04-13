@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ProfileFragment extends Fragment {
     private TabLayout tabLayout;
     private TextView profileName;
     private TextView userID;
+    private Button btnEditProfile;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -58,6 +60,16 @@ public class ProfileFragment extends Fragment {
         profileName.setText("@"+ ParseUser.getCurrentUser().getUsername());
         userID = view.findViewById(R.id.tvUserID);
         userID.setText("TikTok Clone Account - ID: " + ParseUser.getCurrentUser().getObjectId());
+
+        //This section is to create the TabLayout (switch between "Works" and "Favorites")
+        tabLayout = view.findViewById(R.id.tabLayout);
+        viewPager = view.findViewById(R.id.viewpager02);
+        tabLayout.setupWithViewPager(viewPager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+        viewPagerAdapter.addFragment(new UserPosts_Fragment(), "Works");
+        viewPagerAdapter.addFragment(new Favorite_Fragment(), "Favorites");
+        viewPager.setAdapter(viewPagerAdapter);
+
         //Logout button to log out the current user, and sends the user back to Login Page
         btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -70,18 +82,23 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        //This section is to create the TabLayout (switch between "Works" and "Favorites")
-        tabLayout = view.findViewById(R.id.tabLayout);
-        viewPager = view.findViewById(R.id.viewpager02);
-        tabLayout.setupWithViewPager(viewPager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
-        viewPagerAdapter.addFragment(new UserPosts_Fragment(), "Works");
-        viewPagerAdapter.addFragment(new Favorite_Fragment(), "Favorites");
-        viewPager.setAdapter(viewPagerAdapter);
+        //Edit profile button sends the user to edit profile page
+        btnEditProfile = view.findViewById(R.id.btnEditProfile);
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goEditProfileActivity();
+            }
+        });
     }
 
     private void goLoginActivity() {
         Intent i = new Intent(getActivity(), LoginActivity.class);
+        startActivity(i);
+    }
+
+    private void goEditProfileActivity() {
+        Intent i = new Intent(getActivity(), EditProfileActivity.class);
         startActivity(i);
     }
 }

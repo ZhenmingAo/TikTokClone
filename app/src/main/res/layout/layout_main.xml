@@ -16,15 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivLike"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="10dp"
+    <ImageButton
+        android:id="@+id/like_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10.5dp"
         android:layout_marginBottom="15dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/ivComment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/favorite01" />
+        app:srcCompat="@drawable/ic_baseline_favorite" />
 
     <ImageView
         android:id="@+id/ivComment"
@@ -45,7 +47,7 @@
         android:src="@drawable/user01"
         app:civ_border_color="@color/red"
         app:civ_border_width="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/ivLike"
+        app:layout_constraintBottom_toTopOf="@+id/like_btn"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView

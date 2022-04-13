@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--the icon turns to green when the edit text is in focus-->
+    <item android:drawable="@drawable/ic_baseline_vpn_key_focused" android:state_focused="true" />
+    <!--the icon turns to grey when the edit text is out of focus-->
+    <item android:drawable="@drawable/ic_baseline_vpn_key" android:state_focused="false" />
+</selector>

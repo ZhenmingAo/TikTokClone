@@ -34,9 +34,10 @@ public class SingleViewActivity extends AppCompatActivity {
         setContentView(R.layout.single_video_view);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String description = intent.getStringExtra("description");
-        String videoUrl = intent.getStringExtra("videoUrl");
+        Post post = intent.getParcelableExtra("post");
+        String username = post.getUser().getUsername();
+        String description = post.getDescription();
+        String videoUrl = post.getVideo().getUrl();
 
         imageButton =  findViewById(R.id.ibGoBack);
         imageButton.setOnClickListener(new View.OnClickListener() {

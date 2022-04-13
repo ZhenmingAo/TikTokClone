@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -69,6 +70,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private SeekBar seekBar;
         private Runnable runnable;
         private Handler handler;
+        private ImageButton like;
+        Boolean clicked = true;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             videoView = itemView.findViewById(R.id.videoView);
             seekBar = itemView.findViewById(R.id.sbSeekbar);
+            like = itemView.findViewById(R.id.like_btn);
         }
         @SuppressLint("ClickableViewAccessibility")
         public void bind(Post post) {
@@ -128,7 +132,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     }
                 }
             });
+
+            //Temp like function
+            like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (clicked) {
+                        clicked = false;
+                        like.setImageResource(R.drawable.ic_baseline_favorite_filled);
+                    } else {
+                        clicked = true;
+                        like.setImageResource(R.drawable.ic_baseline_favorite);
+                    }
+                }
+            });
+
         }
+
         public void updateProgressBar(){
             int progress = videoView.getCurrentPosition();
             seekBar.setProgress(progress);

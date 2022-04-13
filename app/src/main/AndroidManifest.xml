@@ -24,6 +24,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".SingleViewActivity" />
+        <activity android:name=".EditProfileActivity" />
     </application>
 
 </manifest>

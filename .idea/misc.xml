@@ -5,12 +5,22 @@
       <map>
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/add_icon_selector.xml" value="0.17" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/border_rect.xml" value="0.1765" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/custom_edit_text_rounded.xml" value="0.2835" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/home_icon_selector.xml" value="0.17" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.191" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_account_circle_focused.xml" value="0.191" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_account_circle_selector.xml" value="0.191" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.116" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_favorite_filled.xml" value="0.116" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_vpn_key.xml" value="0.191" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_vpn_key_focused.xml" value="0.191" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/ic_baseline_vpn_key_selector.xml" value="0.191" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/profile_icon_selector.xml" value="0.17" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/drawable/thumb_image.xml" value="0.1705" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_home.xml" value="0.3029891304347826" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_login.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/activity_main.xml" value="0.3029891304347826" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/edit_profile_layout.xml" value="0.2879999900124293" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/fragment_compose.xml" value="0.2879999900124293" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/fragment_favorite_posts.xml" value="0.33242753623188404" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/fragment_posts.xml" value="0.30978260869565216" />
@@ -19,7 +29,7 @@
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/fragment_view.xml" value="0.3229166666666667" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/item_profile_post.xml" value="0.2879999900124293" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/layout_home.xml" value="0.35190217391304346" />
-        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/layout_main.xml" value="0.30978260869565216" />
+        <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/layout_main.xml" value="0.4363636212309535" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/single_video_view.xml" value="0.31851851851851853" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/smart_tab.xml" value="0.3229166666666667" />
         <entry key="..\:/Users/zhenm/AndroidStudioProjects/TikTokClone/app/src/main/res/layout/tab_layout.xml" value="0.31805555555555554" />

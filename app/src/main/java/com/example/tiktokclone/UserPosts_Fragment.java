@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,7 @@ public class UserPosts_Fragment extends Fragment implements ProfilePostsAdapter.
     @Override
     public void onPostClick(int position) {
         Intent i = new Intent(getActivity(), SingleViewActivity.class);
+        i.putExtra("post", profilePosts.get(position));
         i.putExtra("username", profilePosts.get(position).getUser().getUsername());
         i.putExtra("description", profilePosts.get(position).getDescription());
         i.putExtra("videoUrl", profilePosts.get(position).getVideo().getUrl());
