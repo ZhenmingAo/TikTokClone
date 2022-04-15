@@ -16,10 +16,13 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
 import java.util.List;
 import java.util.logging.Handler;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
@@ -66,12 +69,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private VideoView videoView;
         private TextView tvUsername;
         private TextView tvDescription;
+        private CircleImageView userPic;
         private ProgressBar pbProgressbar;
         private SeekBar seekBar;
         private Runnable runnable;
         private Handler handler;
+        private Boolean clicked = true;
+
         private ImageButton like;
-        Boolean clicked = true;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +84,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             videoView = itemView.findViewById(R.id.videoView);
             seekBar = itemView.findViewById(R.id.sbSeekbar);
+            userPic = itemView.findViewById(R.id.cvUser);
+
             like = itemView.findViewById(R.id.like_btn);
         }
         @SuppressLint("ClickableViewAccessibility")
@@ -86,6 +93,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText("@"+ post.getUser().getUsername());
+            ParseFile image = post.getUser().getParseFile("userAvatar");
+            if (image != null && !image.getUrl().isEmpty()){
+                Glide.with(context).load(post.getUser().getParseFile("userAvatar").getUrl()).into(userPic);
+            }
             ParseFile video = post.getVideo();
             if (video != null){
                 videoView.setVideoPath(post.getVideo().getUrl());

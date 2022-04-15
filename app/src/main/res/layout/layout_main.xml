@@ -44,7 +44,7 @@
         android:layout_height="41dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="25dp"
-        android:src="@drawable/user01"
+        android:src="@drawable/default_user"
         app:civ_border_color="@color/red"
         app:civ_border_width="3dp"
         app:layout_constraintBottom_toTopOf="@+id/like_btn"

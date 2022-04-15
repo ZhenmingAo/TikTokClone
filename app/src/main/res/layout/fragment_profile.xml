@@ -22,7 +22,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="96dp"
-        android:src="@drawable/tiktok02"
+        android:src="@drawable/default_user"
         app:civ_circle_background_color="@color/red"
         app:civ_border_color="@color/dark01"
         app:civ_border_width="5dp"
@@ -113,7 +113,7 @@
             android:id="@+id/tvUserBio"
             android:layout_width="331dp"
             android:layout_height="51dp"
-            android:text="This person is lazy, he/she didn't write anything ..."
+            android:hint="This person is lazy, he/she didn't write anything ..."
             android:textColor="@color/gray"
             android:textSize="12sp" />
 

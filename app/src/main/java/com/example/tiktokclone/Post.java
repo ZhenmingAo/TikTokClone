@@ -39,4 +39,6 @@ public class Post extends ParseObject implements Parcelable{
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
+
+
 }

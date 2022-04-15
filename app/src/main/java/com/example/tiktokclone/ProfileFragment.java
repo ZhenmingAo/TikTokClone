@@ -1,6 +1,8 @@
 package com.example.tiktokclone;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,6 +23,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -27,11 +31,16 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
 
@@ -42,6 +51,8 @@ public class ProfileFragment extends Fragment {
     private TextView profileName;
     private TextView userID;
     private Button btnEditProfile;
+    private CircleImageView profilePic;
+    private TextView userBio;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -60,6 +71,17 @@ public class ProfileFragment extends Fragment {
         profileName.setText("@"+ ParseUser.getCurrentUser().getUsername());
         userID = view.findViewById(R.id.tvUserID);
         userID.setText("TikTok Clone Account - ID: " + ParseUser.getCurrentUser().getObjectId());
+        profilePic = view.findViewById(R.id.cvProfilePic);
+        ParseFile image = ParseUser.getCurrentUser().getParseFile("userAvatar");
+        if (image != null){
+            Glide.with(getContext()).load(ParseUser.getCurrentUser().getParseFile("userAvatar").getUrl()).into(profilePic);
+        }
+        userBio = view.findViewById(R.id.tvUserBio);
+        String bio = ParseUser.getCurrentUser().getString("userBio");
+        if (bio != null){
+            userBio.setText(ParseUser.getCurrentUser().getString("userBio"));
+            userBio.setTextColor(Color.WHITE);
+        }
 
         //This section is to create the TabLayout (switch between "Works" and "Favorites")
         tabLayout = view.findViewById(R.id.tabLayout);
