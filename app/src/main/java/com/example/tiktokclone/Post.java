@@ -40,5 +40,4 @@ public class Post extends ParseObject implements Parcelable{
         put(KEY_USER, user);
     }
 
-
 }
