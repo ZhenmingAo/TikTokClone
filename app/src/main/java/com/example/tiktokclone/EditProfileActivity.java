@@ -3,7 +3,10 @@ package com.example.tiktokclone;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileUtils;
@@ -26,6 +29,7 @@ import com.parse.ParseUser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
@@ -44,9 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private CircleImageView editProfilePic;
     private EditText userBio;
-    private Uri selectedImage;
-    //private File photo;
-    InputStream inputStream;
+    private File photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,15 +131,38 @@ public class EditProfileActivity extends AppCompatActivity {
         startActivityForResult(intent, 3);
     }
 
+    protected Bitmap loadFromUri(Uri photoUri) {
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
+
     //Choose image from gallery and put it in ImageView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && data != null){
-            selectedImage = data.getData();
-            File photo = new File(selectedImage.getPath());
-            ParseUser.getCurrentUser().put("userAvatar", new ParseFile(photo));
-            editProfilePic.setImageURI(selectedImage);
+            Uri selectedImage = data.getData();
+            Bitmap bitmapImage = loadFromUri(selectedImage);
+
+            //File imageFile = new File(getExternalCacheDir(), selectedImage.toString());
+            //Bitmap photoFile = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+            editProfilePic.setImageBitmap(bitmapImage);
+
+            //ParseUser.getCurrentUser().put("userAvatar", new ParseFile(bitmapImage));
+            ParseUser.getCurrentUser().saveInBackground();
         }
     }
 

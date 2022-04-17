@@ -18,7 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
+import org.json.JSONException;
+
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.logging.Handler;
 
@@ -85,7 +89,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             videoView = itemView.findViewById(R.id.videoView);
             seekBar = itemView.findViewById(R.id.sbSeekbar);
             userPic = itemView.findViewById(R.id.cvUser);
-
             like = itemView.findViewById(R.id.like_btn);
         }
         @SuppressLint("ClickableViewAccessibility")
@@ -144,6 +147,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 }
             });
 
+            if (post.getJSONArray("userLiked") != null){
+                for (int i = 0; i < post.getJSONArray("userLiked").length(); i++) {
+                    // accessing each element of array
+                    try {
+                        String userObjectID = post.getJSONArray("userLiked").getString(i);
+                        if (userObjectID.equals(ParseUser.getCurrentUser().getObjectId())){
+                            like.setImageResource(R.drawable.ic_baseline_favorite_filled);
+                            clicked = false;
+                        }else{
+                            like.setImageResource(R.drawable.ic_baseline_favorite);
+                            clicked = true;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }else {
+                like.setImageResource(R.drawable.ic_baseline_favorite);
+                clicked = true;
+            }
+
             //Temp like function
             like.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -151,9 +175,33 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     if (clicked) {
                         clicked = false;
                         like.setImageResource(R.drawable.ic_baseline_favorite_filled);
+                        post.add("userLiked", ParseUser.getCurrentUser().getObjectId());
+                        post.saveInBackground();
                     } else {
                         clicked = true;
                         like.setImageResource(R.drawable.ic_baseline_favorite);
+                        /*if (post.getJSONArray("userLiked") != null){
+                            for (int i = 0; i < post.getJSONArray("userLiked").length(); i++) {
+                                try {
+                                    String userObjectID = post.getJSONArray("userLiked").getString(i);
+                                    if (userObjectID.equals(ParseUser.getCurrentUser().getObjectId())){
+                                        String[] tempList = new String[post.getJSONArray("userLiked").length()-1];
+                                        for (int t = 0, k = 0; t < post.getJSONArray("userLiked").length(); t++) {
+                                            if (t == i) {
+                                                continue;
+                                            }else{
+                                                tempList[k++] = post.getJSONArray("userLiked").get(i).toString();
+                                            }
+                                        }
+                                        tvDescription.setText(tempList.toString());
+                                        //post.put("userLiked", );
+                                        //post.saveInBackground();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }*/
                     }
                 }
             });
