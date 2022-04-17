@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.json.JSONException;
@@ -147,7 +148,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 }
             });
 
-            if (post.getJSONArray("userLiked") != null){
+
+            //TODO: update the like functions
+
+            //TODO: the Relation approach of the like function
+
+            //post.getRelation("userRelation").getQuery().whereEqualTo("objectID", ParseUser.getCurrentUser().getObjectId());
+
+            //TODO: The array approach of like function
+            /*if (post.getJSONArray("userLiked") != null){
                 for (int i = 0; i < post.getJSONArray("userLiked").length(); i++) {
                     // accessing each element of array
                     try {
@@ -166,9 +175,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }else {
                 like.setImageResource(R.drawable.ic_baseline_favorite);
                 clicked = true;
-            }
+            }*/
 
-            //Temp like function
+            //TODO: Add disliking
             like.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -207,6 +216,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             });
 
         }
+
+
+
+
 
         public void updateProgressBar(){
             int progress = videoView.getCurrentPosition();
